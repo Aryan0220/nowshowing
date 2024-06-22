@@ -31,13 +31,12 @@ export const isFollowingUser = async (id: string) => {
 }
 
 export const followUser = async (id: string) => {
-    console.log("in");
     const self = await getSelf();
-    console.log("got self");
+
     const otherUser = await db.user.findUnique({
         where: { id },
     });
-    console.log("in");
+
     if(!otherUser){
         throw new Error("User not found");
     }
@@ -70,4 +69,44 @@ export const followUser = async (id: string) => {
 
     return follow;
 
+}
+
+export const unfollowUser = async (id: string) => {
+    const self = await getSelf();
+
+    const otherUser = await db.user.findUnique({
+        where: {
+            id,
+        },
+    });
+
+    if(!otherUser){
+        throw new Error("User not Found");
+    }
+
+    if(otherUser.id === self.id){
+        throw new Error("Cannot unfollow yourself");
+    }
+
+    const existingFollow = await db.follow.findFirst({
+        where: {
+            followerId: self.id,
+            followingId: otherUser.id,
+        },
+    });
+
+    if(!existingFollow){
+        throw new Error("Not following");
+    }
+
+    const follow = await db.follow.delete({
+        where: {
+            id: existingFollow.id,
+        },
+        include: {
+            following: true,
+        },
+    });
+
+    return follow;
 }

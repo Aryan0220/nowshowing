@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useTransition } from "react";
-import { onFollow } from "@/actions/follow";
+import { onFollow, onUnfollow } from "@/actions/follow";
 import { toast } from "sonner";
 
 interface ActionProps{
@@ -16,7 +16,7 @@ export const Actions = ({
 }: ActionProps) => {
     const [isPending, startTransition] = useTransition();
     
-    const onClick = () => {
+    const handleFollow = () => {
         startTransition(() => {
             onFollow(userId)
             .then((data) => toast.success(`You are now Following ${data.following.username}`))
@@ -24,9 +24,26 @@ export const Actions = ({
         });
     };
 
+    const handleUnfollow = () => {
+        startTransition(() => {
+            onUnfollow(userId)
+            .then((data) => toast.success(`You have Unfollowed ${data.following.username}`))
+            .catch(() => toast.error("Something Went Wrong"));
+        });
+    };
+
+    const onClick = () => {
+        if(isFollowing){
+            handleUnfollow();
+        }
+        else{
+            handleFollow();
+        }
+    }
+
     return(
         <Button disabled={isFollowing || isPending} onClick={onClick} variant="primary" className="text-white">
-            Follow
+            {isFollowing ? "Unfollow" : "Follow"}
         </Button>
     )
 }
