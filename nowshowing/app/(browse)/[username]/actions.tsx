@@ -42,7 +42,7 @@ export const Actions = ({
     }
 
     return(
-        <Button disabled={isFollowing || isPending} onClick={onClick} variant="primary" className="text-white">
+        <Button disabled={isPending} onClick={onClick} variant="primary" className="text-white">
             {isFollowing ? "Unfollow" : "Follow"}
         </Button>
     )
