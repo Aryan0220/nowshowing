@@ -34,6 +34,15 @@ export const getRecommended = async () => {
                             },
                         },
                     },
+                    {
+                        NOT: {
+                            blocking: {
+                                some: {
+                                    blockedId: userId,
+                                },
+                            },
+                        },
+                    },
                 ],    
             },
             orderBy: {
@@ -48,11 +57,6 @@ export const getRecommended = async () => {
             },
         });
     }
-    users = await db.user.findMany({
-        orderBy: {
-            createdAt: "desc"
-        },
-    });
 
     return users;
 }

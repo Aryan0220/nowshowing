@@ -1,5 +1,6 @@
 import { db } from "./db";
 import { getSelf } from "./auth-service";
+import { Following } from "@/app/(browse)/_components/sidebar/following";
 
 export const getFollowedUsers = async() => {
     try {
@@ -8,6 +9,13 @@ export const getFollowedUsers = async() => {
         const followedUsers = db.follow.findMany({
             where : {
                 followerId: self.id,
+                following: {
+                    blocking: {
+                        none: {
+                            blockedId: self.id,
+                        },
+                    },
+                },
             },
             include: {
                 following: true,
