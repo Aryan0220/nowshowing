@@ -13,4 +13,5 @@ export const getSelf = async () => {
         throw new Error("Not Found");
     }
     return user;
-}
+};
+
