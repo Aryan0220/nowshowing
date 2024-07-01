@@ -32,6 +32,7 @@ export const KeyCard = ({
                         <CopyButton value={value || ""} />
                     </div>
                     <Button 
+                        className="text-white"
                         onClick={() => setShow(!show)}
                         size = "sm"
                         variant="link"

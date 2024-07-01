@@ -8,15 +8,25 @@ import {
     RoomServiceClient,
     type CreateIngressOptions,
     TrackSource,
-    IngressVideoOptions,
+    type IngressVideoOptions,
+    type IngressAudioOptions,
+    IngressVideoEncodingOptions,
+    IngressAudioEncodingOptions,
 } from "livekit-server-sdk";
 
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 import { revalidatePath } from "next/cache";
 
-  
+type CustomIngressVideoOptions = {
+    source: TrackSource;
+    preset: IngressVideoEncodingPreset;
+};
 
+type CustomIngressAudioOptions = {
+    source: TrackSource;
+    preset: IngressAudioEncodingPreset;
+};
 const roomService = new RoomServiceClient(
     process.env.LIVEKIT_API_URL!,
     process.env.LIVEKIT_API_KEY!,
@@ -60,15 +70,25 @@ export const createIngress = async (ingressType: IngressInput) => {
     if (ingressType === IngressInput.WHIP_INPUT) {
         options.enableTranscoding = true;
     } else{
-        options.video = {
+        const videoOptions: CustomIngressVideoOptions = {
             source: TrackSource.CAMERA,
-            preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,    // error in preset
+            preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
         };
-
-        options.audio = {
+        const audioOptions: CustomIngressAudioOptions = {
             source: TrackSource.MICROPHONE,
-            preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS,      //error in preset
+            preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS,
         };
+        (options as any).video = videoOptions;
+        (options as any).audio = audioOptions;
+        // options.video = {
+        //     source: TrackSource.CAMERA,
+        //     preset: IngressVideoEncodingPreset.H264_1080P_30FPS_3_LAYERS,
+        // };
+
+        // options.audio = {
+        //     source: TrackSource.MICROPHONE,
+        //     preset: IngressAudioEncodingPreset.OPUS_STEREO_96KBPS,      //error in preset
+        // };
     };
 
     const ingress = await ingressClient.createIngress(
