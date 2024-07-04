@@ -7,7 +7,7 @@ import { useParticipants, useRemoteParticipant} from "@livekit/components-react"
 
 import { UserIcon } from "lucide-react";
 
-import { Actionss, ActionsSkeleton } from "./actionss";
+import { Actionss, ActionsSkeleton } from "./actions";
 
 import { Skeleton } from "@/components/ui/skeleton";
 interface HeaderProps { 
