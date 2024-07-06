@@ -1,6 +1,7 @@
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 import { Stream } from "stream";
+import { Thumbnail } from "@/components/thumbnail";
 
 
 export const getSearch = async (term?: string) => {
@@ -43,8 +44,13 @@ export const getSearch = async (term?: string) => {
                     },
                 ],
             },
-            include:{
+            select:{
                 user:true,
+                id: true,
+                name: true,
+                isLive: true,
+                thumbnailUrl: true,
+                updatedAt: true,
             },
             orderBy: [
                 {
@@ -74,8 +80,13 @@ export const getSearch = async (term?: string) => {
                     },
                 ],
             },
-            include:{
+            select:{
                 user:true,
+                id: true,
+                name: true,
+                isLive: true,
+                thumbnailUrl: true,
+                updatedAt: true,
             },
             orderBy: [
                 {
