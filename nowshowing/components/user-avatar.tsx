@@ -54,7 +54,7 @@ export const UserAvatar = ({
                     {username[username.length - 1]}
                 </AvatarFallback>
             </Avatar>
-            {showBadge && (
+            {canShowBadge && (
                 <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
                     <Livebadge />
                 </div>

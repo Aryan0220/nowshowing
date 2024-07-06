@@ -9,7 +9,7 @@ export const getUserByUsername = async (username: string) => {
             stream: true,
             _count:{
                 select: {
-                    followedBy: true,
+                    followedby: true,
                 },
             },
         },
