@@ -14,7 +14,7 @@ export const Results = async ({
     return (
         <div>
             <h2 className="text-1g font-semibold mb-4">
-            Results for term &quot;{term}squot;
+            Results for &quot;{term}&quot;
             </h2>
             {data. length === 0 && (
                 <p className="text-muted-foreground text-sm">
@@ -36,7 +36,7 @@ export const ResultsSkeleton = () => {
         <Skeleton className="h-8 w-[290px] mb-4" />
         <div className="flex flex-col gap-y-4">
             {[... Array (4)].map((_, i) => (
-                < ResultCardSkeleton key={i} />
+                <ResultCardSkeleton key={i} />
             ))}
         </div>
     </div>

@@ -37,8 +37,9 @@ export const ChatForm = ({
     const handleSubmit= (e: React.FormEvent<HTMLFormElement>) => { 
         e.preventDefault();
         e.stopPropagation();
-
-        if (value || isDisabled) return;
+        if (!value || isDisabled){
+            return;
+        }
 
         if (isDelayed && !isDelayBlocked) { 
             setIsDelayBlocked(true); 

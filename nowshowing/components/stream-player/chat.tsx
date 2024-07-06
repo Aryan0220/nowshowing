@@ -96,7 +96,7 @@ import {
     useChat,
     useConnectionState,
     useRemoteParticipant } from "@livekit/components-react";
-
+ 
 import { ChatHeader, ChatHeaderSkeleton } from "./chat-header";    
 import { ChatForm, ChatFormSkeleton } from "./chat-form"; 
 import { ChatList, ChatListSkeleton } from "./chat-list";
@@ -144,6 +144,7 @@ export const Chat = ({
     }, [messages]);
 
     const onSubmit = () => {
+        console.log(value);
         if (!send) return;
 
         send(value);

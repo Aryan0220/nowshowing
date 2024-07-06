@@ -4,7 +4,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const Results = async () => {
 const data = await getStreams();
-
+    // console.log(data);
     return(
         <div>
             <h2 className="text-lg font-semibold mb-4">
@@ -22,7 +22,7 @@ const data = await getStreams();
                         data={result}
                     />
                 ))}
-            </div>
+            </div> 
         </div>
     )
 }

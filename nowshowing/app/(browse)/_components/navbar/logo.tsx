@@ -23,7 +23,7 @@ export const Logo = () => {
                         ProtoTwit
                     </p>
                     <p className="text-xs text-muted-foreground">
-                        Let's play
+                        Let&apos;s play
                     </p>
                 </div> 
             </div>

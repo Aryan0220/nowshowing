@@ -11,7 +11,6 @@ interface ResultCardProps{
         isLive: boolean;
         name: string;
         thumbnailUrl: string | null;
-        updatedAt: Date;
         user: User;
     };
 };
@@ -19,6 +18,7 @@ interface ResultCardProps{
 export const ResultCard = ({
     data,
 }: ResultCardProps) => {
+    // console.log(data.isLive);
     return (
         <Link href={`/${data.user.username}`}>
             <div className="h-full w-full space-y-4">
@@ -28,7 +28,7 @@ export const ResultCard = ({
                     isLive={data.isLive}
                     username={data.user.username}
                 />
-                
+
                 <div className="flex gap-x-3">
                     <UserAvatar 
                         username={data.user.username}
