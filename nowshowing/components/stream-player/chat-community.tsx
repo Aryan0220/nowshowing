@@ -1,7 +1,3 @@
-/* 
-
-
-*/
 "use client";
 
 import { useMemo, useState } from "react";
@@ -49,7 +45,7 @@ export const ChatCommunity = ({
         }, [] as (RemoteParticipant | LocalParticipant)[]);
 
         return deduped.filter((participant) => {
-            return participant.name?.toLowerCase().includes(debouncedValue.toLowerCase()) 
+            return participant.name?.toLowerCase().includes(debouncedValue[0].toLowerCase()) 
         });
     }, [participants, debouncedValue]);
 

@@ -1,7 +1,7 @@
 "use client"; 
 
 import { Trash } from "lucide-react";
-import {toast} from "sonner"; 
+import { toast } from "sonner"; 
 import { useState, useTransition, useRef ,ElementRef, use} from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";  
@@ -17,7 +17,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import {Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import { updateStream } from "@/actions/stream";
 import { UploadDropzone } from "@/lib/uploadthing";
 import { Hint } from "@/components/hint";
@@ -144,6 +144,7 @@ return (
                     variant="primary"
                     type="submit"
                     >
+                        Save
                     </Button>
                 </div>
             </form>

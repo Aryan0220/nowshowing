@@ -9,7 +9,7 @@ export const Actions = () => {
             <Button
             size="sm"
             variant="ghost"
-            className="text-muted-foreground hover:text-primary"
+            className="text-muted-foreground"
             asChild
             >
                 <Link className="flex gap-x-2" href="/">

@@ -91,7 +91,7 @@ export const HeaderSkeleton = () => {
             <div className="flex items-center gap-x-2">
                 <UserAvatarSkeleton size="lg" />
                 <div className="space-y-2">
-                    <Skeleton className="h−6 w-32" /> 
+                    <Skeleton className="h-6 w-32" /> 
                     <Skeleton className="h-4 w-24" />
                 </div>
             </div>

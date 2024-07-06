@@ -56,6 +56,8 @@ export const LiveVideo = ({
         setIsFullScreen(isCurrentlyFullscreen);
     }
 
+    useEventListener("fullscreenchange", handleFullscreenChange, wrapperRef);
+
     useTracks([Track.Source.Camera, Track.Source.Microphone])
         .filter((track) => track.participant.identity === participant.identity)
         .forEach((track) => {
