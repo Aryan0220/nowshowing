@@ -70,7 +70,7 @@ export const Actionss = ({
         isFollowing
             ?" fill-white"
             : "fill-none"
-        )} /> I
+        )} />
         { isFollowing
             ? "Unfollow"
             : "Follow"

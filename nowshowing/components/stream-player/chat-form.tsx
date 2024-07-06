@@ -84,7 +84,7 @@ export const ChatForm = ({
                 size="sm"
                 disabled={isDisabled}
                 >
-                Chat 
+                Send 
                 </Button>
             </div>
         </form>

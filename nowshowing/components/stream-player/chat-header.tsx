@@ -3,19 +3,19 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChatToggle } from "./chat_toggle"; 
 
-import { variantToggle } from "./variant-toggle";
+import { VariantToggle } from "./variant-toggle";
 
 export const ChatHeader = () => {
     return (
         <div className="relative p-3 border-b">
             <div className="absolute left-3 top-2 hidden lg:block">
-                <ChatToggle/>
+                <ChatToggle />
             </div>
             <p className="font-semibold text-priamry text-center">
                 Stream Chat
             </p>
-            <div className="absolute left-3 top-2">
-                <VariantToggle/>
+            <div className="absolute right-3 top-2">
+                <VariantToggle />
             </div>
         </div>
     );
